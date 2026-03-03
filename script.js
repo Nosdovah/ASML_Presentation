@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const progressBar = document.getElementById('progressBar');
-    
+
     let currentSlide = 0;
     const totalSlides = slides.length;
 
@@ -53,8 +53,31 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update button states
         prevBtn.style.opacity = currentSlide === 0 ? '0.3' : '1';
         prevBtn.style.cursor = currentSlide === 0 ? 'default' : 'pointer';
-        
+
         nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0.3' : '1';
         nextBtn.style.cursor = currentSlide === totalSlides - 1 ? 'default' : 'pointer';
+    }
+
+    // Touch Swipe Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+            goNext(); // Swipe left
+        }
+        if (touchEndX > touchStartX + swipeThreshold) {
+            goPrev(); // Swipe right
+        }
     }
 });

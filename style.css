@@ -653,3 +653,118 @@ h3 {
         transform: translateX(-50%) scale(1);
     }
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .slide {
+        padding: 4rem 1rem 1rem;
+    }
+
+    .main-title {
+        font-size: 2.2rem;
+    }
+
+    .sub-title {
+        font-size: 1.3rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .legend-item {
+        font-size: 0.8rem;
+    }
+
+    .phase-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .phase-subtitle {
+        font-size: 1rem;
+        display: block;
+    }
+
+    .nodes-container {
+        align-items: stretch;
+    }
+
+    .node {
+        display: flex;
+        width: 32%;
+        /* Expand width slightly */
+    }
+
+    .node-inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem 0.1rem;
+        font-size: 0.65rem;
+        word-break: break-word;
+        /* Ensure text fits */
+    }
+
+    .node span {
+        font-size: 0.55rem;
+        margin-top: 0.2rem;
+    }
+
+    .label {
+        font-size: 0.55rem;
+        top: -15px;
+        line-height: 1.1;
+    }
+
+    .label.align-left {
+        padding-left: 5%;
+    }
+
+    .label.align-right {
+        padding-right: 5%;
+    }
+
+    .arrow.self+.label {
+        top: 20px;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    #prevBtn {
+        left: 5px;
+    }
+
+    #nextBtn {
+        right: 5px;
+    }
+
+    .risk-box {
+        padding: 0.5rem;
+        width: 95% !important;
+        left: 50% !important;
+        top: 0% !important;
+        /* Move to the very top of flow container */
+        background: rgba(15, 15, 20, 0.95);
+        /* Opaque dark background to hide lines */
+        border: 1px solid rgba(239, 68, 68, 0.7);
+        z-index: 10;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+
+    .risk-header {
+        font-size: 0.7rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .risk-body {
+        font-size: 0.55rem;
+        line-height: 1.3;
+    }
+}
