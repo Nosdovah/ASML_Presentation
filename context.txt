@@ -1,0 +1,5 @@
+Penjelasan Singkat Analisis Risiko:
+Risiko Single-Source (Pada Tahap Source): Ini adalah risiko operasional dan strategis. Karena tidak ada perusahaan lain di dunia yang bisa membuat lensa sepresisi Zeiss, ASML tidak memiliki "Plan B". Jika terjadi bencana alam atau masalah finansial di Zeiss, rantai pasok global semikonduktor akan mengalami bottleneck total.
+
+Risiko Geopolitik (Pada Tahap Deliver):
+Ini adalah risiko eksternal yang berada di luar kendali perusahaan. Mengingat mesin ASML adalah teknologi dual-use (bisa digunakan untuk kepentingan militer/AI tingkat tinggi), pemerintah seringkali membatasi pengiriman ke negara-negara tertentu. Hal ini mengganggu aliran uang (pelunasan pembayaran terhambat) dan aliran material (barang tertahan di gudang).

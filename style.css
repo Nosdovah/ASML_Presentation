@@ -1,0 +1,655 @@
+:root {
+    --bg-dark: #0a0a0e;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+
+    --color-info: #e5e7eb;
+    /* Light gray instead of black for dark theme */
+    --color-material: #3b82f6;
+    /* Blue */
+    --color-money: #10b981;
+    /* Green */
+    --color-risk: #ef4444;
+    /* Red */
+
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Background Effects */
+.bg-glow {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -2;
+    opacity: 0.15;
+}
+
+.bg-glow-1 {
+    top: -20%;
+    left: -10%;
+    background: radial-gradient(circle, #3b82f6, transparent 70%);
+}
+
+.bg-glow-2 {
+    bottom: -20%;
+    right: -10%;
+    background: radial-gradient(circle, #8b5cf6, transparent 70%);
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+}
+
+/* Presentation Container */
+.presentation-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.slides-wrapper {
+    flex-grow: 1;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px) scale(0.98);
+    pointer-events: none;
+    padding: 3rem 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+    z-index: 10;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Slide 0 Typography */
+.badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 50px;
+    color: #93c5fd;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+#slide-0 {
+    justify-content: center;
+    align-items: center;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.main-title .highlight {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub-title {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #e5e7eb;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.legend {
+    margin-top: 2rem;
+    display: inline-block;
+    text-align: left;
+}
+
+.legend h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+}
+
+.legend-items {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.legend-item .line {
+    width: 30px;
+    height: 2px;
+    display: block;
+}
+
+.legend-item .line.info {
+    background: var(--color-info);
+}
+
+.legend-item .line.material {
+    background: var(--color-material);
+}
+
+.legend-item .line.money {
+    background: var(--color-money);
+}
+
+.legend-item .box-legend {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+.legend-item .risk {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid var(--color-risk);
+}
+
+/* Diagram Layout */
+.diagram-slide {
+    padding-top: 2rem;
+}
+
+.phase-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+}
+
+.phase-subtitle {
+    font-weight: 300;
+    color: var(--text-muted);
+    font-size: 1.4rem;
+}
+
+/* Nodes & Lanes */
+.nodes-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    padding: 0 5%;
+}
+
+.node {
+    width: 24%;
+    text-align: center;
+}
+
+.node-inner {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.node-inner i {
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+.node.core .node-inner {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.node span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+}
+
+.lane-lines {
+    position: absolute;
+    top: 7rem;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.line-v {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: dashed 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Positions matching nodes */
+.line-v.c1 {
+    left: 17%;
+}
+
+.line-v.c2 {
+    left: 50%;
+}
+
+.line-v.c3 {
+    left: 83%;
+}
+
+/* Flows container */
+.flow-container {
+    flex-grow: 1;
+    position: relative;
+    margin-top: 2rem;
+    z-index: 1;
+}
+
+/* Flow Items (Arrows & Text) */
+.flow-item {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Labels */
+.label {
+    position: absolute;
+    top: -24px;
+    font-size: 0.85rem;
+    width: 100%;
+    text-align: center;
+    color: var(--text-main);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.label.align-left {
+    padding-left: 20%;
+    text-align: left;
+}
+
+.label.align-right {
+    padding-right: 20%;
+    text-align: right;
+}
+
+/* Arrow Base Styles */
+.arrow {
+    position: absolute;
+    height: 2px;
+}
+
+.arrow::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+/* Arrow Directions */
+.arrow.right::after {
+    right: 0;
+    border-left: 10px solid;
+}
+
+.arrow.left {
+    transform: rotate(180deg);
+}
+
+.arrow.left::after {
+    right: 0;
+    border-left: 10px solid;
+}
+
+/* Self-loop Arrow */
+.arrow.self {
+    width: 15%;
+    height: 30px;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-radius: 0 10px 10px 0;
+    transform: translateY(-15px);
+}
+
+.arrow.self::after {
+    right: auto;
+    left: 0;
+    bottom: -6px;
+    top: auto;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 10px solid;
+    border-left: none;
+}
+
+.arrow.self.dir-left {
+    border-right: none;
+    border-left: 2px solid;
+    border-radius: 10px 0 0 10px;
+    transform: translateX(-100%) translateY(-15px);
+}
+
+.arrow.self.dir-left::after {
+    left: auto;
+    right: 0;
+    bottom: -6px;
+    border-left: 10px solid;
+    border-right: none;
+}
+
+
+/* Arrow Positioning */
+.from-c1.to-c2 {
+    left: 17%;
+    width: 33%;
+}
+
+.from-c2.to-c3 {
+    left: 50%;
+    width: 33%;
+}
+
+/* Left pointing arrows have origin reversed visually but position start is the same conceptually, 
+   except we used transform rotate(180deg) for .left so left: x% works as the right side */
+.from-c3.to-c2 {
+    left: 50%;
+    width: 33%;
+}
+
+.from-c2.to-c1 {
+    left: 17%;
+    width: 33%;
+}
+
+.at-c2 {
+    left: 50%;
+}
+
+/* Colors */
+.info .arrow,
+.info .arrow.self {
+    border-color: var(--color-info);
+    background: transparent;
+}
+
+.info .arrow:not(.self) {
+    background: var(--color-info);
+}
+
+.info .arrow::after {
+    border-left-color: var(--color-info);
+    border-right-color: var(--color-info);
+}
+
+.material .arrow,
+.material .arrow.self {
+    border-color: var(--color-material);
+    background: transparent;
+}
+
+.material .arrow:not(.self) {
+    background: var(--color-material);
+}
+
+.material .arrow::after {
+    border-left-color: var(--color-material);
+    border-right-color: var(--color-material);
+}
+
+.money .arrow,
+.money .arrow.self {
+    border-color: var(--color-money);
+    background: transparent;
+}
+
+.money .arrow:not(.self) {
+    background: var(--color-money);
+}
+
+.money .arrow::after {
+    border-left-color: var(--color-money);
+    border-right-color: var(--color-money);
+}
+
+/* Risk Boxes */
+.risk-box {
+    position: absolute;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    z-index: 5;
+    animation: pulse 2s infinite;
+}
+
+.risk-header {
+    color: var(--color-risk);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.risk-body {
+    font-size: 0.85rem;
+    color: #fca5a5;
+    line-height: 1.4;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+/* Controls & UI */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-50%) scale(1.1);
+}
+
+#prevBtn {
+    left: 20px;
+}
+
+#nextBtn {
+    right: 20px;
+}
+
+.progress-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 100;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+/* Animations for slide content entering */
+.slide.active .node {
+    animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slide.active .flow-item {
+    animation: fadeInArrow 0.8s ease forwards;
+    opacity: 0;
+}
+
+.slide.active .flow-item:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.slide.active .flow-item:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.slide.active .flow-item:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+.slide.active .risk-box {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, pulse 2s infinite 0.5s;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInArrow {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}

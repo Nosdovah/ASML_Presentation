@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASML Supply Chain & Risk Analysis</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="grid-overlay"></div>
+
+    <main class="presentation-container">
+
+        <!-- Navigation Controls -->
+        <button id="prevBtn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="nextBtn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="slides-wrapper" id="slidesWrapper">
+
+            <!-- SLIDE 0: TITLE -->
+            <section class="slide active" id="slide-0">
+                <div class="title-content text-center">
+                    <div class="badge">Analisis Sistem Manufaktur</div>
+                    <h1 class="main-title">Aliran Supply Chain <span class="highlight">ASML</span></h1>
+                    <h2 class="sub-title">dengan Analisis Risiko Kritis</h2>
+                    <p class="description">Sebuah pemodelan interaktif untuk memahami aliran informasi, material, dan
+                        uang dalam ekosistem litografi EUV.</p>
+
+                    <div class="legend glass-panel">
+                        <h3><i class="fas fa-list-ul"></i> Legenda Aliran</h3>
+                        <div class="legend-items">
+                            <div class="legend-item"><span class="line info"></span> Aliran Informasi</div>
+                            <div class="legend-item"><span class="line material"></span> Aliran Material</div>
+                            <div class="legend-item"><span class="line money"></span> Aliran Uang</div>
+                            <div class="legend-item"><span class="box-legend risk"></span> Titik Risiko Kritis</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COMMON HEADER FOR DIAGRAM SLIDES (injected via CSS/positioning relative to slides or duplicated) -->
+            <!-- To keep animation clean, each diagram slide gets its own node structure -->
+
+            <!-- SLIDE 1: PLAN -->
+            <section class="slide diagram-slide" id="slide-1">
+                <h2 class="phase-title">1. PLAN <span class="phase-subtitle">(Aliran Informasi)</span></h2>
+
+                <div class="nodes-container">
+                    <div class="node customer">
+                        <div class="node-inner"><i class="fas fa-microchip"></i> Pelanggan<br><span>(TSMC/Intel)</span>
+                        </div>
+                    </div>
+                    <div class="node core">
+                        <div class="node-inner"><i class="fas fa-building"></i> ASML</div>
+                    </div>
+                    <div class="node supplier">
+                        <div class="node-inner"><i class="fas fa-cogs"></i> Pemasok<br><span>(Zeiss/Trumpf)</span></div>
+                    </div>
+                </div>
+                <div class="lane-lines">
+                    <div class="line-v c1"></div>
+                    <div class="line-v c2"></div>
+                    <div class="line-v c3"></div>
+                </div>
+
+                <div class="flow-container">
+                    <div class="flow-item info" style="top: 20%;">
+                        <div class="arrow right from-c1 to-c2"></div>
+                        <div class="label">Prediksi Permintaan & Roadmap Produk</div>
+                    </div>
+                    <div class="flow-item info" style="top: 50%;">
+                        <div class="arrow self at-c2"></div>
+                        <div class="label align-right">Perencanaan Kapasitas Produksi Global</div>
+                    </div>
+                    <div class="flow-item info" style="top: 80%;">
+                        <div class="arrow right from-c2 to-c3"></div>
+                        <div class="label">Sinkronisasi Jadwal Produk Jangka Panjang</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: SOURCE -->
+            <section class="slide diagram-slide" id="slide-2">
+                <h2 class="phase-title">2. SOURCE <span class="phase-subtitle">(Aliran Informasi, Uang &
+                        Material)</span></h2>
+
+                <div class="nodes-container">
+                    <div class="node customer">
+                        <div class="node-inner"><i class="fas fa-microchip"></i> Pelanggan</div>
+                    </div>
+                    <div class="node core">
+                        <div class="node-inner"><i class="fas fa-building"></i> ASML</div>
+                    </div>
+                    <div class="node supplier">
+                        <div class="node-inner"><i class="fas fa-cogs"></i> Pemasok</div>
+                    </div>
+                </div>
+                <div class="lane-lines">
+                    <div class="line-v c1"></div>
+                    <div class="line-v c2"></div>
+                    <div class="line-v c3"></div>
+                </div>
+
+                <div class="flow-container">
+                    <div class="risk-box" style="top: 10%; left: 50%; transform: translateX(-50%); width: 60%;">
+                        <div class="risk-header"><i class="fas fa-exclamation-triangle"></i> RISIKO 1: Single-Source
+                            Dependency</div>
+                        <div class="risk-body"><strong>Ini adalah risiko operasional dan strategis.</strong> Karena
+                            tidak ada perusahaan lain di dunia yang bisa membuat lensa sepresisi Zeiss, ASML tidak
+                            memiliki "Plan B". Jika terjadi bencana alam atau masalah finansial di Zeiss, rantai pasok
+                            global semikonduktor akan mengalami bottleneck total.</div>
+                    </div>
+
+                    <div class="flow-item info" style="top: 45%;">
+                        <div class="arrow right from-c2 to-c3"></div>
+                        <div class="label">Surat Pesanan / Purchase Order</div>
+                    </div>
+                    <div class="flow-item money" style="top: 65%;">
+                        <div class="arrow right from-c2 to-c3"></div>
+                        <div class="label">Pembayaran DP & Pendanaan R&D (Uang)</div>
+                    </div>
+                    <div class="flow-item material" style="top: 85%;">
+                        <div class="arrow left from-c3 to-c2"></div>
+                        <div class="label">Pengiriman Lensa & Sistem Laser (Material)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: MAKE -->
+            <section class="slide diagram-slide" id="slide-3">
+                <h2 class="phase-title">3. MAKE <span class="phase-subtitle">(Aliran Internal & Informasi)</span></h2>
+
+                <div class="nodes-container">
+                    <div class="node customer">
+                        <div class="node-inner"><i class="fas fa-microchip"></i> Pelanggan</div>
+                    </div>
+                    <div class="node core">
+                        <div class="node-inner"><i class="fas fa-building"></i> ASML</div>
+                    </div>
+                    <div class="node supplier">
+                        <div class="node-inner"><i class="fas fa-cogs"></i> Pemasok</div>
+                    </div>
+                </div>
+                <div class="lane-lines">
+                    <div class="line-v c1"></div>
+                    <div class="line-v c2"></div>
+                    <div class="line-v c3"></div>
+                </div>
+
+                <div class="flow-container">
+                    <div class="flow-item material" style="top: 40%;">
+                        <div class="arrow self at-c2 dir-left"></div>
+                        <div class="label align-right">Perakitan Modular & Integrasi Sistem</div>
+                    </div>
+                    <div class="flow-item info" style="top: 70%;">
+                        <div class="arrow self at-c2 dir-right"></div>
+                        <div class="label align-right">Pengujian Presisi Nanometer & QC (Info)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: DELIVER -->
+            <section class="slide diagram-slide" id="slide-4">
+                <h2 class="phase-title">4. DELIVER <span class="phase-subtitle">(Aliran Material, Informasi &
+                        Uang)</span></h2>
+
+                <div class="nodes-container">
+                    <div class="node customer">
+                        <div class="node-inner"><i class="fas fa-microchip"></i> Pelanggan</div>
+                    </div>
+                    <div class="node core">
+                        <div class="node-inner"><i class="fas fa-building"></i> ASML</div>
+                    </div>
+                    <div class="node supplier">
+                        <div class="node-inner"><i class="fas fa-cogs"></i> Pemasok</div>
+                    </div>
+                </div>
+                <div class="lane-lines">
+                    <div class="line-v c1"></div>
+                    <div class="line-v c2"></div>
+                    <div class="line-v c3"></div>
+                </div>
+
+                <div class="flow-container">
+                    <div class="risk-box" style="top: 5%; left: 25%; transform: translateX(-50%); width: 45%;">
+                        <div class="risk-header"><i class="fas fa-exclamation-triangle"></i> RISIKO 2: Geopolitical &
+                            Export Control</div>
+                        <div class="risk-body"><strong>Ini adalah risiko eksternal yang berada di luar kendali
+                                perusahaan.</strong> Mengingat mesin ASML adalah teknologi dual-use (bisa digunakan
+                            untuk kepentingan militer/AI tingkat tinggi), pemerintah seringkali membatasi pengiriman ke
+                            negara-negara tertentu. Hal ini mengganggu aliran uang (pelunasan pembayaran terhambat) dan
+                            aliran material (barang tertahan di gudang).</div>
+                    </div>
+
+                    <div class="flow-item material" style="top: 45%;">
+                        <div class="arrow left from-c2 to-c1"></div>
+                        <div class="label align-left">Pengiriman Mesin EUV via Kargo Udara (Material)</div>
+                    </div>
+                    <div class="flow-item info" style="top: 65%;">
+                        <div class="arrow left from-c2 to-c1"></div>
+                        <div class="label align-left">Instalasi & Dokumentasi Teknis</div>
+                    </div>
+                    <div class="flow-item money" style="top: 85%;">
+                        <div class="arrow right from-c1 to-c2"></div>
+                        <div class="label align-left">Pelunasan Pembayaran Mesin (Uang)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 5: RETURN -->
+            <section class="slide diagram-slide" id="slide-5">
+                <h2 class="phase-title">5. RETURN <span class="phase-subtitle">(Aliran Material & Informasi)</span></h2>
+
+                <div class="nodes-container">
+                    <div class="node customer">
+                        <div class="node-inner"><i class="fas fa-microchip"></i> Pelanggan</div>
+                    </div>
+                    <div class="node core">
+                        <div class="node-inner"><i class="fas fa-building"></i> ASML</div>
+                    </div>
+                    <div class="node supplier">
+                        <div class="node-inner"><i class="fas fa-cogs"></i> Pemasok</div>
+                    </div>
+                </div>
+                <div class="lane-lines">
+                    <div class="line-v c1"></div>
+                    <div class="line-v c2"></div>
+                    <div class="line-v c3"></div>
+                </div>
+
+                <div class="flow-container">
+                    <div class="flow-item info" style="top: 30%;">
+                        <div class="arrow right from-c1 to-c2"></div>
+                        <div class="label align-left">Data Performa & Laporan Kerusakan</div>
+                    </div>
+                    <div class="flow-item material" style="top: 55%;">
+                        <div class="arrow left from-c2 to-c1"></div>
+                        <div class="label align-left">Suku Cadang Pengganti / Upgrade</div>
+                    </div>
+                    <div class="flow-item material" style="top: 80%;">
+                        <div class="arrow right from-c2 to-c3"></div>
+                        <div class="label">Pengembalian Komponen untuk Refurbishment</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
